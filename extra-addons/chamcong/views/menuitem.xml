@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Existing code for other views and data -->
+
+        <record id="action_chamcong" model="ir.actions.act_window">
+            <field name="name">Chấm Công</field>
+            <field name="res_model">chamcong</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_chamcong" name="Chấm Công" sequence="10" action="action_chamcong" />
+
+    </data>
+</odoo>
