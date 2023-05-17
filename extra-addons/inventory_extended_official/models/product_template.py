@@ -3,6 +3,7 @@ from odoo import fields, models, _, api
 
 class Product(models.Model):
     _inherit = "product.template"
+    
     unique_id = fields.Char("Unique ID", required=True)
     all_fields = fields.Char(
         string='All', compute='_compute_all', search='_search_all')

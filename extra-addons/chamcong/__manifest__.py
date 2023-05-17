@@ -20,14 +20,13 @@
     'version': '0.1',
     'application':True, 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['product'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/menuitem.xml',
         'views/chamcong_view.xml',
-        'views/chamcong_addmore.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
