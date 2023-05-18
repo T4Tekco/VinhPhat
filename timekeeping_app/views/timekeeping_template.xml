@@ -1,9 +1,0 @@
-<odoo>
-  <template xml:space="preserve">
-    <t t-inherit="web.ListView.Buttons" t-inherit-mode="extension">
-      <xpath expr="//*[@class='btn btn-secondary fa fa-download o_list_export_xlsx']" position="after">
-        <button type="button" class="btn btn-secondary o_list_new_button" t-on-click="actionDef">New Button</button>
-      </xpath>
-    </t>
-  </template>
-</odoo>

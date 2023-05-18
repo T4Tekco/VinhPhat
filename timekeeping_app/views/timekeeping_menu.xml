@@ -2,13 +2,13 @@
     <!-- Action to open the Book list -->
     <record id="action_timekeeping_table" model="ir.actions.act_window">
         <field name="name">Timekeeping Table</field>
-        <field name="view_id" ref="timekeeping_app.view_tree_timekeeping"/>
+        <!-- <field name="view_id" ref="timekeeping_app.view_tree_timekeeping"/> -->
         <field name="res_model">timekeeping.table</field>
         <field name="view_mode">tree,form</field>
     </record>
     <record id="action_timekeeping_table2" model="ir.actions.act_window">
         <field name="name">List</field>
-        <field name="view_id" ref="timekeeping_app.view_tree_timekeeping_edit"/>
+        <!-- <field name="view_id" ref="timekeeping_app.view_tree_timekeeping_edit"/> -->
         <field name="res_model">timekeeping.table</field>
         <field name="view_mode">tree</field>
     </record>
