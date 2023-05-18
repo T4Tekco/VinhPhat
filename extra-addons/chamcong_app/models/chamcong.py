@@ -9,7 +9,6 @@ class Timekeeping(models.Model):
     product_id = fields.Many2one(
         'product.product',
         string='Product',
-        
         required=True)
     
     quantity = fields.Integer(string='Quantity')
