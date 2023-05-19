@@ -10,7 +10,12 @@ class Timekeeping(models.Model):
         "product.product", string="Product", required=True)
     quantity = fields.Integer(string="Quantity")
     date = fields.Date(default=lambda self: fields.Date.today())
+    pay = fields.Float(string="Pay", compute="_compute_pay")   
 
+    @api.depends("product_id.standard_price","quantity")
+    def _compute_pay(self):
+        for product in self:
+            product.pay = product.product_id.standard_price * product.quantity
     # @api.model
     # def _search_this_week(self, operator, value):
     #     current_date = fields.Date.today()
