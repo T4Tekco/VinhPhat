@@ -1,0 +1,100 @@
+<odoo>
+	<data>
+		<record id="view_form_quotation_edited" model="ir.ui.view">
+			<field name="name">Custom quotation Form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//form/sheet/group/group/label[@for='pricelist_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/group/group/field[@name='pricelist_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/group/group/field[@name='show_update_pricelist']"
+					position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/group/group/div[@groups='product.group_product_pricelist']"
+					position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<div name="button_box" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</div>
+				<xpath expr="//field[@name='payment_term_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='validity_date']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='note']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='sale_order_template_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/notebook/page[@name='other_information']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/notebook/page[@name='customer_signature']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<field name="partner_id" position="attributes">
+					<attribute name="context">{'res_partner_search_mode': 'customer', 'show_vat': True}</attribute>
+					<attribute name="domain">
+						[('customer_rank','&gt;', 0), ('type', '!=', 'private'), ('company_id', 'in', (False,
+						company_id))]
+					</attribute>
+				</field>
+				<!-- filter products base on customer -->
+				<field name="product_template_id" position="after">
+					<field name="partner_id_test" invisible="1" />
+				</field>
+				<field name="product_template_id" position="attributes">
+					<attribute name="domain">[('customer_id', '=', partner_id_test)]</attribute>
+				</field>
+				<button id="create_invoice_percentage" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<button id="create_invoice" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<button name="action_quotation_send" states="sent,sale" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<button name="action_quotation_send" states="draft" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<field name="state" widget="statusbar" position="attributes">
+					<attribute name="statusbar_visible">draft,sale</attribute>
+				</field>
+				<xpath expr="//field[@widget='section_and_note_text']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//tree/field[@name='tax_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//tree/field[@name='customer_lead']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//tree/field[@name='product_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<field name="date_order" position="attributes">
+					<attribute name="widget">date</attribute>
+				</field>
+			</field>
+		</record>
+		<record id="view_form_quotation_pageoptional" model="ir.ui.view">
+			<field name="name">Custom quotation Form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_management.sale_order_form_quote" />
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='optional_products']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
