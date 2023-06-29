@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product" inherit_id="website_sale.product">
+        <xpath expr="//form" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+        <xpath expr="//t[@t-call='website_sale.pricelist_list']" position="replace">
+            <t></t>
+        </xpath>
+    </template>
+
+    <template id="products" inherit_id="website_sale.products">
+        <xpath expr="//t[@t-call='website_sale.pricelist_list']" position="replace">
+            <t></t>
+        </xpath>
+    </template>
+
+    <template id="products_item" inherit_id="website_sale.products_item">
+        <xpath expr="//div[@class='product_price']" position="replace">
+            <t></t>
+        </xpath>
+    </template>
+
+    <template id="search" inherit_id="website_sale.search">
+        <xpath expr="//t[@t-call='website.website_search_box_input']" position="inside">
+            <t t-set="display_detail" t-valuef="false" />
+        </xpath>
+    </template>
+
+
+    <record id="website_sale.product_custom_text" model="ir.ui.view">
+        <field name="active" eval="False" />
+    </record>
+
+</odoo>
